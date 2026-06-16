@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五分钟健康刺客 | 你的AI健康管家</title>
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- 项目主样式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+    动态粒子背景 Canvas
+    ========================================== -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ==========================================
+    导航栏
+    ========================================== -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="navbar-brand">
+            <span class="logo-icon"><i class="fas fa-skull-crossbones"></i></span>
+            <span>健康刺客</span>
+        </a>
+        <div class="navbar-links">
+            <a href="#features">功能特性</a>
+            <a href="#how-it-works">工作流程</a>
+            <a href="#tech-stack">技术栈</a>
+            <a href="#preview">应用预览</a>
+            <a href="https://github.com" target="_blank" class="github-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+        </div>
+        <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- 移动端菜单 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#features" onclick="toggleMobileMenu()">功能特性</a>
+        <a href="#how-it-works" onclick="toggleMobileMenu()">工作流程</a>
+        <a href="#tech-stack" onclick="toggleMobileMenu()">技术栈</a>
+        <a href="#preview" onclick="toggleMobileMenu()">应用预览</a>
+        <a href="https://github.com" target="_blank" onclick="toggleMobileMenu()">GitHub <i class="fab fa-github"></i></a>
+    </div>
+
+    <!-- ==========================================
+    Hero 区域
+    ========================================== -->
+    <section class="hero">
+        <div class="hero-badge">
+            <i class="fas fa-bolt"></i>
+            <span>5分钟搞定每日健康检查</span>
+        </div>
+        <h1 class="hero-title">
+            <span class="gradient-text">五分钟健康刺客</span>
+        </h1>
+        <p class="hero-subtitle">
+            你的 AI 健康管家 &mdash; 记录久坐、低头、睡眠、饮水和压力数据，
+            结合天气信息，生成个性化健康报告与反击动作。
+        </p>
+        <div class="hero-actions">
+            <a href="#features" class="btn btn-primary">
+                <i class="fas fa-rocket"></i>
+                探索功能
+            </a>
+            <a href="#preview" class="btn btn-secondary">
+                <i class="fas fa-eye"></i>
+                查看预览
+            </a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="number">7+</div>
+                <div class="label">健康指标追踪</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">AI</div>
+                <div class="label">智能分析驱动</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">5min</div>
+                <div class="label">每日快速记录</div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    功能特性区域
+    ========================================== -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <div class="section-tag">Features</div>
+            <h2>全方位健康追踪</h2>
+            <p>从身体到心理，多维度记录与分析你的每日健康状态</p>
+            <div class="divider"></div>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon"><i class="fas fa-chair"></i></div>
+                <h3>久坐 &amp; 低头监测</h3>
+                <p>记录每天久坐最长时段和低头累计时长，帮你意识到不良姿势习惯，及时发出提醒。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><i class="fas fa-bed"></i></div>
+                <h3>睡眠 &amp; 饮水管理</h3>
+                <p>追踪每日睡眠时长和饮水量，与推荐标准对比，守护你的基础生理需求。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><i class="fas fa-brain"></i></div>
+                <h3>压力 &amp; 心情评估</h3>
+                <p>主观压力自评（1-10分）结合心情记录，全面了解你的心理状态变化趋势。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><i class="fas fa-dumbbell"></i></div>
+                <h3>运动 &amp; 天气联动</h3>
+                <p>记录每日运动时长，自动获取当地天气信息，AI 据此生成适合当下的运动建议。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><i class="fas fa-robot"></i></div>
+                <h3>DeepSeek AI 分析</h3>
+                <p>接入 DeepSeek 大语言模型，根据你的所有数据生成个性化健康报告、评分和明日建议。</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><i class="fas fa-chart-line"></i></div>
+                <h3>趋势图表 &amp; 导出</h3>
+                <p>7天综合健康指数趋势图一目了然，支持 CSV 导出，方便进行长期健康数据分析。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    工作流程区域
+    ========================================== -->
+    <section class="section" id="how-it-works">
+        <div class="section-header">
+            <div class="section-tag">How It Works</div>
+            <h2>如何使用</h2>
+            <p>简单四步，每天 5 分钟，全面掌控自己的健康状态</p>
+            <div class="divider"></div>
+        </div>
+        <div class="flow-container">
+            <div class="flow-step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>输入健康数据</h3>
+                    <p>填写久坐时长、低头时长、睡眠时间、饮水量、压力评分、运动时长和心情等关键指标。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>自动获取天气</h3>
+                    <p>输入城市名，系统自动从 wttr.in 获取实时天气状况、气温和湿度数据。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>AI 智能分析</h3>
+                    <p>数据提交后，DeepSeek AI 模型综合分析所有指标，生成个性化健康评分与建议。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h3>查看报告与趋势</h3>
+                    <p>获得详细健康报告、反击动作建议、综合健康指数，以及最近7天的健康趋势图表。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    技术栈区域
+    ========================================== -->
+    <section class="section" id="tech-stack">
+        <div class="section-header">
+            <div class="section-tag">Tech Stack</div>
+            <h2>技术架构</h2>
+            <p>现代 Python 技术栈，构建高效可靠的健康管理应用</p>
+            <div class="divider"></div>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fab fa-python" style="color: #3776AB;"></i></div>
+                <div class="tech-name">Python</div>
+                <div class="tech-desc">核心开发语言</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon" style="color: #FF4B4B;">St</div>
+                <div class="tech-name">Streamlit</div>
+                <div class="tech-desc">Web 应用框架</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fas fa-database" style="color: #003B57;"></i></div>
+                <div class="tech-name">SQLite</div>
+                <div class="tech-desc">本地数据存储</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fas fa-cloud-sun" style="color: #FFD93D;"></i></div>
+                <div class="tech-name">wttr.in</div>
+                <div class="tech-desc">天气数据 API</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon" style="color: #4D6BFE;">DeepSeek</div>
+                <div class="tech-name">DeepSeek API</div>
+                <div class="tech-desc">AI 健康分析</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fas fa-chart-bar" style="color: #FF6B6B;"></i></div>
+                <div class="tech-name">Matplotlib</div>
+                <div class="tech-desc">数据可视化</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fas fa-table" style="color: #217346;"></i></div>
+                <div class="tech-name">Pandas</div>
+                <div class="tech-desc">数据处理</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-icon"><i class="fas fa-file-csv" style="color: #00A4EF;"></i></div>
+                <div class="tech-name">CSV Export</div>
+                <div class="tech-desc">数据导出功能</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    应用预览区域
+    ========================================== -->
+    <section class="section" id="preview">
+        <div class="section-header">
+            <div class="section-tag">Preview</div>
+            <h2>应用界面预览</h2>
+            <p>直观展示健康数据的录入、分析和可视化界面</p>
+            <div class="divider"></div>
+        </div>
+
+        <!-- 模拟截图卡片 -->
+        <div class="mock-screenshots">
+            <div class="mock-screenshot-content">
+                <!-- 顶部 -->
+                <div class="mock-header-row">
+                    <div class="mock-title">
+                        <i class="fas fa-skull-crossbones" style="color: var(--primary); margin-right: 8px;"></i>
+                        今日健康报告
+                    </div>
+                    <div class="mock-badge">
+                        <i class="fas fa-calendar-day"></i> 2025-01-15
+                    </div>
+                </div>
+
+                <!-- 关键指标网格 -->
+                <div class="mock-grid-cards">
+                    <div class="mock-card-small">
+                        <div class="label">久坐最长时段</div>
+                        <div class="value">3.5h</div>
+                    </div>
+                    <div class="mock-card-small">
+                        <div class="label">低头时长</div>
+                        <div class="value">4.2h</div>
+                    </div>
+                    <div class="mock-card-small">
+                        <div class="label">睡眠时长</div>
+                        <div class="value good">7.5h</div>
+                    </div>
+                    <div class="mock-card-small">
+                        <div class="label">综合健康指数</div>
+                        <div class="value">76/100</div>
+                    </div>
+                </div>
+
+                <!-- 进度条模拟 -->
+                <div class="mock-progress-group">
+                    <div class="mock-progress-row">
+                        <span class="label">久坐健康</span>
+                        <div class="bar"><div class="fill" style="width: 55%; background: linear-gradient(90deg, #FF6B6B, #FFD93D);"></div></div>
+                    </div>
+                    <div class="mock-progress-row">
+                        <span class="label">颈椎健康</span>
+                        <div class="bar"><div class="fill" style="width: 45%; background: linear-gradient(90deg, #FF6B6B, #FFD93D);"></div></div>
+                    </div>
+                    <div class="mock-progress-row">
+                        <span class="label">睡眠质量</span>
+                        <div class="bar"><div class="fill" style="width: 85%; background: linear-gradient(90deg, #56CCF2, #2F80ED);"></div></div>
+                    </div>
+                    <div class="mock-progress-row">
+                        <span class="label">压力管理</span>
+                        <div class="bar"><div class="fill" style="width: 65%; background: linear-gradient(90deg, #A8E6CF, #7EC8A8);"></div></div>
+                    </div>
+                </div>
+
+                <!-- 趋势图表模拟 -->
+                <div class="mock-chart-area">
+                    <div class="chart-title">
+                        <i class="fas fa-chart-line"></i> 最近 7 天健康趋势
+                    </div>
+                    <div class="mock-chart-bars">
+                        <div class="bar" style="height: 45%;"></div>
+                        <div class="bar" style="height: 60%;"></div>
+                        <div class="bar" style="height: 55%;"></div>
+                        <div class="bar active" style="height: 70%;"></div>
+                        <div class="bar" style="height: 65%;"></div>
+                        <div class="bar active" style="height: 75%;"></div>
+                        <div class="bar" style="height: 76%;"></div>
+                    </div>
+                    <div class="mock-chart-labels">
+                        <span>1/9</span>
+                        <span>1/10</span>
+                        <span>1/11</span>
+                        <span>1/12</span>
+                        <span>1/13</span>
+                        <span>1/14</span>
+                        <span>1/15</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 预览卡片 -->
+        <div class="preview-container" style="margin-top: 40px;">
+            <div class="preview-card">
+                <div class="preview-img">
+                    <div class="mock-content" style="gap: 12px;">
+                        <div class="mock-bar"><div class="fill" style="width: 70%;"></div></div>
+                        <div class="mock-bar"><div class="fill" style="width: 45%;"></div></div>
+                        <div class="mock-bar"><div class="fill" style="width: 85%;"></div></div>
+                        <div class="mock-bar"><div class="fill" style="width: 60%;"></div></div>
+                        <div class="mock-bar"><div class="fill" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+                <div class="preview-body">
+                    <h4><i class="fas fa-clipboard-list" style="color: var(--primary);"></i> 健康评分表</h4>
+                    <p>六维度健康评分 + 综合健康指数，直观展示各指标表现。</p>
+                </div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-img">
+                    <div class="mock-content" style="justify-content: center; align-items: center;">
+                        <div style="font-size: 3rem; opacity: 0.15;">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div style="color: var(--text-muted); font-size: 0.85rem; opacity: 0.5;">AI 正在分析你的数据...</div>
+                    </div>
+                </div>
+                <div class="preview-body">
+                    <h4><i class="fas fa-message" style="color: var(--primary);"></i> AI 健康报告</h4>
+                    <p>DeepSeek 生成个性化反击动作、评分和建议，温暖又幽默。</p>
+                </div>
+            </div>
+            <div class="preview-card">
+                <div class="preview-img">
+                    <div class="mock-content" style="gap: 8px;">
+                        <div class="mock-line"></div>
+                        <div class="mock-line" style="width: 80%;"></div>
+                        <div class="mock-line" style="width: 60%;"></div>
+                        <div class="mock-line" style="width: 90%;"></div>
+                        <div class="mock-line" style="width: 50%;"></div>
+                    </div>
+                </div>
+                <div class="preview-body">
+                    <h4><i class="fas fa-history" style="color: var(--primary);"></i> 历史记录</h4>
+                    <p>查看历史健康数据，支持单条删除和 CSV 导出备份。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    CTA 区域
+    ========================================== -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>开始你的健康旅程</h2>
+            <p>每天 5 分钟，让 AI 帮你追踪健康、发现问题、给出建议。健康刺客，与你并肩作战。</p>
+            <div class="cta-actions">
+                <a href="https://github.com" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i>
+                    查看源码
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-book"></i>
+                    使用文档
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    页脚
+    ========================================== -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#features">功能特性</a>
+            <a href="#how-it-works">工作流程</a>
+            <a href="#tech-stack">技术栈</a>
+            <a href="#preview">应用预览</a>
+        </div>
+        <p>
+            Made with <span class="footer-heart"><i class="fas fa-heart"></i></span> by 健康刺客团队 &bull;
+            Powered by Streamlit &amp; DeepSeek AI
+        </p>
+        <p style="margin-top: 8px; font-size: 0.8rem;">
+            &copy; 2025 五分钟健康刺客 &bull; 开源项目 &bull; MIT License
+        </p>
+    </footer>
+
+    <!-- ==========================================
+    JavaScript
+    ========================================== -->
+    <script>
+        // ==========================================
+        // 动态粒子背景
+        // ==========================================
+        (function() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let mouseX = 0;
+            let mouseY = 0;
+            let animationId;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function initParticles() {
+                const count = Math.min(Math.floor(window.innerWidth * 0.05), 80);
+                particles = [];
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        r: Math.random() * 2 + 1,
+                        alpha: Math.random() * 0.4 + 0.1,
+                    });
+                }
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (const p of particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 107, 107, ${p.alpha})`;
+                    ctx.fill();
+                }
+
+                // 连线
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 150) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(255, 107, 107, ${0.08 * (1 - dist / 150)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                animationId = requestAnimationFrame(drawParticles);
+            }
+
+            window.addEventListener('resize', () => {
+                resize();
+                initParticles();
+            });
+
+            // 鼠标交互 - 粒子排斥
+            canvas.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                for (const p of particles) {
+                    const dx = p.x - mouseX;
+                    const dy = p.y - mouseY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 100) {
+                        const force = (100 - dist) / 100 * 1.5;
+                        p.vx += (dx / dist) * force * 0.05;
+                        p.vy += (dy / dist) * force * 0.05;
+                        // 阻尼
+                        p.vx *= 0.98;
+                        p.vy *= 0.98;
+                    }
+                }
+            });
+
+            resize();
+            initParticles();
+            drawParticles();
+        })();
+
+        // ==========================================
+        // 导航栏滚动效果
+        // ==========================================
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ==========================================
+        // 移动端菜单
+        // ==========================================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.getElementById('hamburger');
+            menu.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        }
+
+        // 点击导航链接时关闭菜单
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.remove('open');
+                document.getElementById('hamburger').classList.remove('active');
+            });
+        });
+
+        // ==========================================
+        // 进度条动画（Intersection Observer）
+        // ==========================================
+        const progressBars = document.querySelectorAll('.mock-progress-row .fill, .mock-chart-bars .bar');
+        const observerOptions = { threshold: 0.3 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 让进度条重新触发动画
+                    const el = entry.target;
+                    const w = el.style.width;
+                    el.style.width = '0%';
+                    setTimeout(() => {
+                        el.style.width = w;
+                    }, 100);
+                }
+            });
+        }, observerOptions);
+
+        progressBars.forEach(bar => observer.observe(bar));
+
+        // ==========================================
+        // 平滑滚动
+        // ==========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ==========================================
+        // 渐入动画（Intersection Observer）
+        // ==========================================
+        const fadeElements = document.querySelectorAll('.flow-step, .feature-card, .tech-item, .preview-card');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            fadeObserver.observe(el);
+        });
+
+        console.log('%c 五分钟健康刺客 ',
+            'background: linear-gradient(135deg, #FF6B6B, #FF8E53); color: white; font-size: 1.5rem; padding: 10px 20px; border-radius: 8px; font-weight: bold;');
+        console.log('%c 你的 AI 健康管家，每天 5 分钟掌控健康。', 'color: #999; font-size: 0.9rem;');
+    </script>
+
+</body>
+</html>
